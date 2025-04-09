@@ -1,16 +1,17 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+import { Bricolage_Grotesque } from "next/font/google";
 import Preloader from "@/components/ui/preloader";
+import { Toaster } from "sonner";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+import "./globals.css";
+import Footer from "@/components/ui/footer";
+import NextTopLoader from "nextjs-toploader";
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const font = Bricolage_Grotesque({
   subsets: ["latin"],
+  display: "swap",
+  variable: "--font-bricolage-grotesque",
+  weight: ["200", "300", "400", "500", "600", "700", "800"],
 });
 
 export const metadata: Metadata = {
@@ -25,10 +26,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={font.className}>
+        <NextTopLoader color="#fff" showSpinner={false} />
         {children}
+        <Footer />
+        <Toaster position="top-center" duration={2000} />
         <Preloader />
       </body>
     </html>
