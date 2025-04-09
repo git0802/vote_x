@@ -4,7 +4,6 @@ import Preloader from "@/components/ui/preloader";
 import { Toaster } from "sonner";
 
 import "./globals.css";
-import Footer from "@/components/ui/footer";
 import NextTopLoader from "nextjs-toploader";
 
 const font = Bricolage_Grotesque({
@@ -26,10 +25,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={font.className}>
+      <body className={`${font.className} min-h-screen`}>
         <NextTopLoader color="#fff" showSpinner={false} />
         {children}
-        <Footer />
         <Toaster position="top-center" duration={2000} />
         <Preloader />
       </body>
