@@ -7,14 +7,14 @@ export default function SignIn() {
     <div className="card lg:card-side bg-base-100 shadow-sm mt-20">
       <figure>
         <Image
-          src="https://picsum.photos/400/500"
+          src="https://picsum.photos/id/26/400/500"
           alt="Album"
           width={400}
           height={500}
         />
       </figure>
       <div className="card-body items-center w-[370px] justify-center">
-        <h2 className="card-title">
+        <h2 className="card-title flex items-center">
           <ShieldUser className="text-info" />
           Sign in to your account
         </h2>
@@ -25,32 +25,28 @@ export default function SignIn() {
           </Link>
         </div>
 
-        <div className="w-full flex flex-col space-y-4 mt-4">
-          <fieldset className="fieldset">
-            <legend className="fieldset-legend">Email</legend>
-            <input
-              type="email"
-              className="input validator"
-              required
-              placeholder="email"
-            />
-          </fieldset>
+        <fieldset className="fieldset w-full mt-4">
+          <legend className="fieldset-legend">Email</legend>
+          <input
+            type="email"
+            className="input validator"
+            required
+            placeholder="email"
+          />
 
-          <fieldset className="fieldset">
-            <legend className="fieldset-legend">Password</legend>
-            <input
-              type="text"
-              className="input validator"
-              required
-              placeholder="password"
-            />
-          </fieldset>
+          <legend className="fieldset-legend">Password</legend>
+          <input
+            type="password"
+            className="input validator"
+            required
+            placeholder="password"
+          />
 
           <div className="flex items-center justify-between">
-            <label className="fieldset-label">
+            <legend className="fieldset-legend">
               <input type="checkbox" className="toggle toggle-xs" />
               <p className="text-sm">Remember me</p>
-            </label>
+            </legend>
             <Link href="/forgot-password">
               <button className="btn btn-link h-6 p-0 btn-sm">
                 Forgot Password?
@@ -58,7 +54,7 @@ export default function SignIn() {
             </Link>
           </div>
 
-          <button className="btn btn-primary w-full">Sign in</button>
+          <button className="btn btn-primary w-full mt-4">Sign in</button>
 
           <button className="btn bg-white text-black border-[#e5e5e5]">
             <svg
@@ -90,7 +86,7 @@ export default function SignIn() {
             </svg>
             Login with Google
           </button>
-        </div>
+        </fieldset>
       </div>
     </div>
   );
