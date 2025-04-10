@@ -24,7 +24,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" data-theme="dark" suppressHydrationWarning>
       <body className={`${font.className} min-h-screen`}>
         <NextTopLoader color="#fff" showSpinner={false} />
         {children}
