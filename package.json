@@ -3,22 +3,31 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
+    "@supabase/auth-helpers-nextjs": "^0.10.0",
+    "@supabase/ssr": "^0.6.1",
+    "@supabase/supabase-js": "^2.49.4",
+    "daisyui": "^5.0.17",
+    "lucide-react": "^0.487.0",
+    "next": "15.2.5",
+    "nextjs-toploader": "^3.8.16",
+    "prisma": "^6.6.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "next": "15.2.5"
+    "sonner": "^2.0.3",
+    "theme-change": "^2.5.0"
   },
   "devDependencies": {
-    "typescript": "^5",
+    "@tailwindcss/postcss": "^4.1.3",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "@tailwindcss/postcss": "^4",
-    "tailwindcss": "^4"
+    "tailwindcss": "^4.1.3",
+    "typescript": "^5"
   }
 }
