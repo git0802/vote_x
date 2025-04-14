@@ -1,9 +1,10 @@
-import type { NextConfig } from "next";
+const imagePatterns = [{ hostname: "picsum.photos" }].map((pattern) => ({
+  protocol: "https",
+  ...pattern,
+}));
 
-const nextConfig: NextConfig = {
-  images: {
-    domains: ["picsum.photos"],
-  },
+const nextConfig = {
+  images: { remotePatterns: imagePatterns },
 };
 
 export default nextConfig;
