@@ -1,8 +1,27 @@
+"use client";
+
+import { signInAction } from "@/functions/auth";
 import { Mail, ShieldUser } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
+import { toast } from "sonner";
 
 export default function SignIn() {
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+
+  function handleSignin() {
+    if (!email || !password) {
+      toast.error("Please submit the required fields.");
+      return;
+    }
+
+    signInAction({
+      email,
+      password,
+    });
+  }
   return (
     <div className="card lg:card-side bg-base-100 shadow-sm mt-20">
       <figure>
@@ -44,7 +63,12 @@ export default function SignIn() {
                 <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
               </g>
             </svg>
-            <input type="email" placeholder="mail@site.com" required />
+            <input
+              type="email"
+              placeholder="mail@site.com"
+              required
+              onChange={(e) => setEmail(e.target.value)}
+            />
           </label>
 
           <legend className="fieldset-legend">Password</legend>
@@ -70,6 +94,7 @@ export default function SignIn() {
               required
               placeholder="Password"
               title="Must be more than 8 characters, including number, lowercase letter, uppercase letter"
+              onChange={(e) => setPassword(e.target.value)}
             />
           </label>
 
@@ -85,7 +110,12 @@ export default function SignIn() {
             </Link>
           </div>
 
-          <button className="btn btn-primary w-full mt-4">Sign in</button>
+          <button
+            className="btn btn-primary w-full mt-4"
+            onClick={handleSignin}
+          >
+            Sign in
+          </button>
 
           <button className="btn bg-white text-black border-[#e5e5e5]">
             <svg

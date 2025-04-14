@@ -1,6 +1,6 @@
 import { redirect } from "next/navigation";
 
-export function encodeRedirect(
+export function encodedRedirect(
   type: "error" | "success",
   path: string,
   message: string
