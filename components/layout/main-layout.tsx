@@ -1,5 +1,3 @@
-"use client";
-
 import * as React from "react";
 import Footer from "@/components/ui/footer";
 import TopBar from "../ui/top-bar";
