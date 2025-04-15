@@ -44,7 +44,7 @@ export const updateSession = async (request: NextRequest) => {
     // Redirect logged-in users away from /login and /signup
     if (user) {
       const pathname = request.nextUrl.pathname;
-      if (pathname === "/login" || pathname === "/signup") {
+      if (pathname === "/signin" || pathname === "/signup") {
         return NextResponse.redirect(new URL("/", request.url));
       }
     }
