@@ -9,19 +9,23 @@ import { useSearchParams } from "next/navigation";
 import { useState } from "react";
 import { toast } from "sonner";
 
-function parseMessage(input: string): Message | null {
-  const [key, value] = input.split("=");
+export function parseMessage(input?: string): Message | null {
+  if (!input) {
+    return null;
+  } else {
+    const [key, value] = input.split("=");
 
-  switch (key) {
-    case "success":
-      return { success: value };
-    case "error":
-      return { error: value };
-    case "message":
-      return { message: value };
-    default:
-      console.error("Invalid message format");
-      return null;
+    switch (key) {
+      case "success":
+        return { success: value };
+      case "error":
+        return { error: value };
+      case "message":
+        return { message: value };
+      default:
+        console.error("Invalid message format");
+        return null;
+    }
   }
 }
 

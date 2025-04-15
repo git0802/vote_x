@@ -107,3 +107,19 @@ export const forgotPasswordAction = async ({
     "Check your email for a link to reset your password."
   );
 };
+
+export const resetPasswordAction = async (password: string) => {
+  const supabase = await createClient();
+
+  const { error } = await supabase.auth.updateUser({
+    password: password,
+  });
+
+  console.log(error);
+
+  if (error) {
+    encodedRedirect("error", "/reset-password", "Password update failed");
+  }
+
+  encodedRedirect("success", "/reset-password", "Password updated");
+};
