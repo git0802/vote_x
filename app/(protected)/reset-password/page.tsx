@@ -1,15 +1,15 @@
 "use client";
 
-import { parseMessage } from "@/app/(auth-pages)/forgot-password/page";
 import { FormMessage, Message } from "@/components/ui/form-message";
 import { resetPasswordAction } from "@/functions/auth";
+import { parseMessage } from "@/utils/utils";
 import { ChevronLeft } from "lucide-react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import { toast } from "sonner";
 
-export default function ResetPassword() {
+function ResetPasswordContent() {
   const searchParams = parseMessage(
     useSearchParams().get("type") as string
   ) as Message;
@@ -125,5 +125,13 @@ export default function ResetPassword() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function ResetPassword() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <ResetPasswordContent />
+    </Suspense>
   );
 }

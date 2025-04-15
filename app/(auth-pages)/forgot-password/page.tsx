@@ -2,34 +2,15 @@
 
 import { FormMessage, Message } from "@/components/ui/form-message";
 import { forgotPasswordAction } from "@/functions/auth";
+import { parseMessage } from "@/utils/utils";
 import { ChevronLeft } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import { toast } from "sonner";
 
-export function parseMessage(input?: string): Message | null {
-  if (!input) {
-    return null;
-  } else {
-    const [key, value] = input.split("=");
-
-    switch (key) {
-      case "success":
-        return { success: value };
-      case "error":
-        return { error: value };
-      case "message":
-        return { message: value };
-      default:
-        console.error("Invalid message format");
-        return null;
-    }
-  }
-}
-
-export default function ForgotPassword() {
+function ForgotPasswordContent() {
   const searchParams = parseMessage(
     useSearchParams().get("type") as string
   ) as Message;
@@ -44,6 +25,7 @@ export default function ForgotPassword() {
 
     forgotPasswordAction({ email });
   }
+
   return (
     <div className="card lg:card-side bg-base-100 shadow-sm mt-20">
       <figure>
@@ -106,5 +88,13 @@ export default function ForgotPassword() {
         </fieldset>
       </div>
     </div>
+  );
+}
+
+export default function ForgotPassword() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <ForgotPasswordContent />
+    </Suspense>
   );
 }
