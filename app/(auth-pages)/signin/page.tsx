@@ -1,13 +1,20 @@
 "use client";
 
+import { FormMessage, Message } from "@/components/ui/form-message";
 import { signInAction } from "@/functions/auth";
+import { parseMessage } from "@/utils/utils";
 import { Mail, ShieldUser } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { useState } from "react";
 import { toast } from "sonner";
 
 export default function SignIn() {
+  const searchParams = parseMessage(
+    useSearchParams().get("type") as string
+  ) as Message;
+
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
@@ -117,7 +124,7 @@ export default function SignIn() {
             Sign in
           </button>
 
-          <button className="btn bg-white text-black border-[#e5e5e5]">
+          <button className="btn bg-white text-black border-[#e5e5e5] mb-4">
             <svg
               aria-label="Google logo"
               width="16"
@@ -147,6 +154,7 @@ export default function SignIn() {
             </svg>
             Login with Google
           </button>
+          <FormMessage message={searchParams} />
         </fieldset>
       </div>
     </div>

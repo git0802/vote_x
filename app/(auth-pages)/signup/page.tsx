@@ -1,13 +1,20 @@
 "use client";
 
+import { FormMessage, Message } from "@/components/ui/form-message";
 import { singUpAction } from "@/functions/auth";
+import { parseMessage } from "@/utils/utils";
 import { ShieldUser } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { useState } from "react";
 import { toast } from "sonner";
 
 export default function SingUp() {
+  const searchParams = parseMessage(
+    useSearchParams().get("type") as string
+  ) as Message;
+
   const [username, setUsername] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
@@ -170,7 +177,7 @@ export default function SingUp() {
             Create account
           </button>
 
-          <button className="btn bg-white text-black border-[#e5e5e5]">
+          <button className="btn bg-white text-black border-[#e5e5e5] mb-4">
             <svg
               aria-label="Google logo"
               width="16"
@@ -200,6 +207,7 @@ export default function SingUp() {
             </svg>
             Login with Google
           </button>
+          <FormMessage message={searchParams} />
         </fieldset>
       </div>
     </div>

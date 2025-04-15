@@ -79,7 +79,7 @@ function ForgotPasswordContent() {
             Send reset email
           </button>
           <Link href="/signin">
-            <button className="btn btn-ghost w-full">
+            <button className="btn btn-ghost w-full mb-4">
               <ChevronLeft />
               Return to sign in
             </button>
