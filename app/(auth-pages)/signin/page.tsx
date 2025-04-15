@@ -7,10 +7,10 @@ import { Mail, ShieldUser } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import { toast } from "sonner";
 
-export default function SignIn() {
+function SignInContent() {
   const searchParams = parseMessage(
     useSearchParams().get("type") as string
   ) as Message;
@@ -158,5 +158,13 @@ export default function SignIn() {
         </fieldset>
       </div>
     </div>
+  );
+}
+
+export default function SignIn() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <SignInContent />
+    </Suspense>
   );
 }
